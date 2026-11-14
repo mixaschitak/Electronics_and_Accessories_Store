@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq; // Для работы Min() и Average()
-
+Console.OutputEncoding = System.Text.Encoding.UTF8;
 namespace CSharpBasics
 {
     class Program
