@@ -12,3 +12,4 @@ C:\Users\Youtuber2099\Desktop\Electronics and Accessories Store\practice\csharp-
 C:\Users\Youtuber2099\Desktop\Electronics and Accessories Store\practice\csharp-basics\obj\Debug\net10.0\CSharpBasics.pdb
 C:\Users\Youtuber2099\Desktop\Electronics and Accessories Store\practice\csharp-basics\obj\Debug\net10.0\CSharpBasics.genruntimeconfig.cache
 C:\Users\Youtuber2099\Desktop\Electronics and Accessories Store\practice\csharp-basics\obj\Debug\net10.0\ref\CSharpBasics.dll
+c:\Users\Youtuber2099\Desktop\Electronics and Accessories Store\practice\csharp-basics\obj\Debug\net10.0\CSharpBasics.sourcelink.json
