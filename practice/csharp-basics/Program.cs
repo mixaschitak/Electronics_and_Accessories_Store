@@ -1,6 +1,4 @@
-﻿Console.OutputEncoding = System.Text.Encoding.UTF8;
-
-string name;
+﻿string name;
 int quantity, price;
 name = "Пепперони";
 quantity = 2;
