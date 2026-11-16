@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Youtuber2099\\Desktop\\Electronics and Accessories Store\\practice\\csharp-basics\\CSharpBasics.csproj": {}
+    "c:\\Users\\Youtuber2099\\Desktop\\Electronics and Accessories Store\\practice\\csharp-basics\\CSharpBasics.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Youtuber2099\\Desktop\\Electronics and Accessories Store\\practice\\csharp-basics\\CSharpBasics.csproj": {
+    "c:\\Users\\Youtuber2099\\Desktop\\Electronics and Accessories Store\\practice\\csharp-basics\\CSharpBasics.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Youtuber2099\\Desktop\\Electronics and Accessories Store\\practice\\csharp-basics\\CSharpBasics.csproj",
+        "projectUniqueName": "c:\\Users\\Youtuber2099\\Desktop\\Electronics and Accessories Store\\practice\\csharp-basics\\CSharpBasics.csproj",
         "projectName": "CSharpBasics",
-        "projectPath": "C:\\Users\\Youtuber2099\\Desktop\\Electronics and Accessories Store\\practice\\csharp-basics\\CSharpBasics.csproj",
+        "projectPath": "c:\\Users\\Youtuber2099\\Desktop\\Electronics and Accessories Store\\practice\\csharp-basics\\CSharpBasics.csproj",
         "packagesPath": "C:\\Users\\Youtuber2099\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Youtuber2099\\Desktop\\Electronics and Accessories Store\\practice\\csharp-basics\\obj\\",
+        "outputPath": "c:\\Users\\Youtuber2099\\Desktop\\Electronics and Accessories Store\\practice\\csharp-basics\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Youtuber2099\\AppData\\Roaming\\NuGet\\NuGet.Config"
