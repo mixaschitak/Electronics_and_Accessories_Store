@@ -8,7 +8,4 @@ namespace ElectronicsTest
         public int Price {get; set; }
     }
 
-
-
-
 }

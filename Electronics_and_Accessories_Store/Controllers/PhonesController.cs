@@ -21,13 +21,25 @@ namespace ElectronicsTest.Controllers
         return Ok(Products);
     }
 
-    [HttpGet("{id}")]        public IActionResult GetById(int id){
+        [HttpGet("{id}")]        
+    public IActionResult GetById(int id){
     var Phone = Products.FirstOrDefault(p => p.Id == id);
         if (Phone == null) return NotFound();
         return Ok(Phone.Name);
             
         }
-
+        [HttpPost]
+        public IActionResult Create(Phone phone)
+        
+        {
+            if (string.IsNullOrWhiteSpace(phone.Name) && phone.Price <= 0)
+            {
+                return BadRequest("Нужны названия и цена больше 0");  
+            }
+            phone.Id = Products.Max(p => p.Id) + 1;
+            Products.Add(phone);
+           return Created($"/api/Product/{phone.Id}",phone);
+        }
     }
 
 }
