@@ -229,3 +229,119 @@
 //         Console.Write(i + " ");
 //     }
 // Console.WriteLine();
+
+
+// Задание 21
+// int price = 450;
+//     for (int i = 1; i <= 5; i++)
+//     {
+//         int total = price * i;
+//         Console.WriteLine($"{i} шт. — {total} ₽");
+//     }
+
+
+// Задание 22
+//      for (int i = 5; i >= 1; i--)
+//          {
+//              Console.WriteLine(i);
+//          }
+//      Console.WriteLine("Открыто!");
+
+
+// Задание 23
+//         int sum = 0;
+//         for (int i = 1; i <= 100; i++)
+//         {
+//             sum = sum + i; 
+//         }
+//         Console.WriteLine($"Сумма от 1 до 100: {sum}");
+
+
+// Задание 24
+// int price = 590;
+// int dailySaving = 70;
+// int savedMoney = 0;
+// int days = 0;
+
+// while (savedMoney < price)
+// {
+//     savedMoney += dailySaving;
+//     days++;
+// }
+
+// Console.WriteLine($"Понадобится дней: {days}");
+
+
+// Задание 25
+// bool IsEven(int number)
+// {
+//     return number % 2 == 0;
+// }
+
+// Console.WriteLine(IsEven(4));
+// Console.WriteLine(IsEven(7));
+
+
+// Задание 26
+// int WithDelivery(int amount)
+// {
+//     return amount < 1000 ? amount + 200 : amount;
+// }
+
+// Console.WriteLine(WithDelivery(800));
+// Console.WriteLine(WithDelivery(1500));
+
+
+// Задание 27
+// int CountVowels(string text)
+// {
+//     string vowels = "аеёиоуыэюя";
+//     string lowerText = text.ToLower();
+//     int count = 0;
+
+//     foreach (char c in lowerText)
+//     {
+//         if (vowels.Contains(c))
+//         {
+//             count++;
+//         }
+//     }
+    
+//     return count;
+// }
+
+// Console.WriteLine(CountVowels("Маргарита"));
+// Console.WriteLine(CountVowels("Пепперони"));
+
+
+// Задание 28
+// bool IsPalindrome(string text)
+// {
+//     string lowerText = text.ToLower();
+//     int left = 0;
+//     int right = lowerText.Length - 1;
+
+//     while (left < right)
+//     {
+//         if (lowerText[left] != lowerText[right])
+//         {
+//             return false;
+//         }
+//         left++;
+//         right--;
+//     }
+    
+//     return true;
+// }
+
+// Console.WriteLine(IsPalindrome("Шалаш"));
+// Console.WriteLine(IsPalindrome("Пицца"));
+
+
+// Задание 29
+// string[] pizzas = { "Маргарита", "Пепперони", "Четыре сыра", "Гавайская" };
+
+// for (int i = 0; i < pizzas.Length; i++)
+// {
+//     Console.WriteLine($"{i + 1}. {pizzas[i]}");
+// }
