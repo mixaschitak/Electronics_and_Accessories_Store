@@ -1,4 +1,4 @@
-namespace ElectronicsTest
+namespace Electronics_and_Accessories_Store.Models
 {
     public class Phone
     {

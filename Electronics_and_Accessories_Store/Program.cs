@@ -1,21 +1,30 @@
-using System.ComponentModel;
-using ElectronicsTest;
+using Microsoft.EntityFrameworkCore;
+using Electronics_and_Accessories_Store.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer(); //найди все запросы
-builder.Services.AddSwaggerGen(); // сделай по запросам описание
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("Default")));
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.EnsureCreated();
+}
 
-app.MapSwagger(); //description in json
-app.UseSwaggerUI();
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.MapGet("/api/hello", () => "Hello world");
-
 app.MapControllers();
-
-
-
 
 app.Run();
