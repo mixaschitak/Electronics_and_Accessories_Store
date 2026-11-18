@@ -4,5 +4,5 @@ dist/
 bin/
 obj/
 *.db
-*db-shm
-*db-wal
+*.db-shm
+*.db-wal
