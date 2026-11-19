@@ -23,8 +23,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 app.MapGet("/api/hello", () => "Hello world");
 app.MapControllers();
-
+app.UseStaticFiles();
 app.Run();

@@ -7,14 +7,20 @@ namespace Electronics_and_Accessories_Store.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        public DbSet<Phone> Phones { get; set; } = null!;
+        public DbSet<Product> Products { get; set; } = null!;
+        public DbSet<Color> Colors { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Phone>().HasData(
-                new Phone { Id = 1, Name = "Айфон", Price = 1000 },
-                new Phone { Id = 2, Name = "Самсунг", Price = 800 },
-                new Phone { Id = 3, Name = "Реалми", Price = 600 }
+            modelBuilder.Entity<Color>().HasData(
+                new Color { Id = 1, Name = "Черный" },
+                new Color { Id = 2, Name = "Белый" }
+            );
+
+            modelBuilder.Entity<Product>().HasData(
+                new Product { Id = 1, Name = "Айфон", Price = 1000, ColorId = 1 , ImageUrl = "/images/monkey.png"},
+                new Product { Id = 2, Name = "Самсунг", Price = 800, ColorId = 1 },
+                new Product { Id = 3, Name = "Реалми", Price = 600, ColorId = 2 }
             );
         }
     }
