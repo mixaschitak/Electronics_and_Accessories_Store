@@ -13,9 +13,7 @@ by Sychev
 
 🔍 Поиск — поисковая строка для быстрого нахождения товаров
 
-
-✨ Мой сайт фигма - https://www.figma.com/design/WzDqLfTZGQI95ND0EXgHYi/Electronics-and-Accessories-Store?node-id=0-1&t=P9LbcK5tPgPW0931-1
 <div align="center">
-Сделано с ❤️ в рамках учебного курса
+❤️ Мой сайт фигма - https://www.figma.com/design/WzDqLfTZGQI95ND0EXgHYi/Electronics-and-Accessories-Store?node-id=0-1&t=P9LbcK5tPgPW0931-1 ❤️
 
 </div>
