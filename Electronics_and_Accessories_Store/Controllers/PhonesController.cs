@@ -1,7 +1,6 @@
-// Product заменить на Pizza
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using Electronics_and_Accessories_Store.Data;
 using Electronics_and_Accessories_Store.Models;
 using Electronics_and_Accessories_Store.Dtos;
@@ -20,22 +19,36 @@ namespace Electronics_and_Accessories_Store.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll(string? search, int? colorId)
         {
-            var Pizzas = await _db.Products
-            
-            .Include(p => p.Color)
-            .ToListAsync();
-            return Ok(Pizzas);
+            var query = _db.Products
+                .Include(p => p.Color)
+                .AsQueryable();
+
+            if (colorId != null)
+                query = query.Where(p => p.ColorId == colorId);
+
+            var products = await query.ToListAsync();
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                var text = search.Trim();
+                products = products
+                    .Where(p => p.Name.Contains(text, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+            }
+
+            return Ok(products);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             var product = await _db.Products
-            
-            .Include(p => p.ColorId)
-            .FirstOrDefaultAsync(p => p.Id ==id);
+                .Include(p => p.Color)
+                .Include(p => p.ReleaseDate)
+                .Include(p => p.Manufacturer)
+                .FirstOrDefaultAsync(p => p.Id == id);
 
             if (product == null)
                 return NotFound();
@@ -44,32 +57,30 @@ namespace Electronics_and_Accessories_Store.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = Roles.Admin)]
         public async Task<IActionResult> Create(SavePhoneDto dto)
         {
-        var colorExist = await _db.Colors.AnyAsync(c => c.Id == dto.ColorId);
-        if (!colorExist) return BadRequest("Цвет не найден");
+            var newProduct = new Product
+            {
+                Name = dto.Name,
+                Price = dto.Price,
+                ColorId = dto.ColorId,
+                ImageUrl = dto.ImageUrl,
+                ReleaseDateId = dto.ReleaseDateId,
+                ManufacturerId = dto.ManufacturerId
+            };
 
-        var newProduct = new Product
-        {
-        Name = dto.Name,
-        Price = dto.Price,
-        ColorId = dto.ColorId,
-        ImageUrl = dto.ImageUrl,
-        };
+            _db.Products.Add(newProduct);
+            await _db.SaveChangesAsync();
 
-    _db.Products.Add(newProduct);
-    await _db.SaveChangesAsync();
-
-    return Created($"/api/PhonesControllers/{newProduct.Id}", newProduct);
-}
+            return Created($"/api/PhonesControllers/{newProduct.Id}", newProduct);
+        }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = Roles.Admin)]
         public async Task<IActionResult> Update(int id, SavePhoneDto dto)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var product = await _db. Products.FindAsync(id);
+            var product = await _db.Products.FindAsync(id);
 
             if (product == null)
                 return NotFound();
@@ -77,6 +88,8 @@ namespace Electronics_and_Accessories_Store.Controllers
             product.Name = dto.Name;
             product.Price = dto.Price;
             product.ColorId = dto.ColorId;
+            product.ReleaseDateId = dto.ReleaseDateId;
+            product.ManufacturerId = dto.ManufacturerId;
 
             await _db.SaveChangesAsync();
 
@@ -84,14 +97,15 @@ namespace Electronics_and_Accessories_Store.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = Roles.Admin)]
         public async Task<IActionResult> Delete(int id)
         {
-            var product = await _db. Products.FindAsync(id);
+            var product = await _db.Products.FindAsync(id);
 
             if (product == null)
                 return NotFound();
 
-            _db. Products.Remove(product);
+            _db.Products.Remove(product);
             await _db.SaveChangesAsync();
 
             return NoContent();

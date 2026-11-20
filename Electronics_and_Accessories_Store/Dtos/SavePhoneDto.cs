@@ -14,6 +14,8 @@ namespace Electronics_and_Accessories_Store.Dtos
         [Range(1, int.MaxValue,ErrorMessage = "Укажите номер категории")]
         public int ColorId { get; set; }
         public string? ImageUrl { get; set; }
+        public int ReleaseDateId { get; set; }
+        public int ManufacturerId { get; set; }
         
     }
 }
